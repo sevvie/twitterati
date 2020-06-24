@@ -1,0 +1,17 @@
+#!/usr/bin/env node
+
+const { broadcast } = require('../lib/functions/broadcast')
+
+require('yargs')
+  .scriptName('twitterati')
+  .usage('$0 <cmd> [args]')
+  .command('broadcast [message]', 'broadcast a message',
+    yargs => {
+      yargs.required('message')
+    },
+    argv => {
+      broadcast(argv.message)
+    }
+  )
+  .help()
+  .argv
